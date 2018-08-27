@@ -1,5 +1,7 @@
 package com.mercadolivre.mutant;
 
+import com.mercadolivre.mutant.domain.detector.DnaSequenceSummarizer;
+import com.mercadolivre.mutant.domain.detector.HumanDnaSequenceSummarizer;
 import com.mercadolivre.mutant.domain.detector.HumanMutantDetector;
 import com.mercadolivre.mutant.domain.detector.MutantDetector;
 import com.mercadolivre.mutant.domain.validator.DnaValidate;
@@ -17,8 +19,13 @@ public class Application {
     }
 
     @Bean
-    public MutantDetector mutantDetector() {
-        return new HumanMutantDetector(new DnaValidate());
+    public MutantDetector mutantDetector(DnaSequenceSummarizer dnaSequenceSummarizer) {
+        return new HumanMutantDetector(new DnaValidate(), dnaSequenceSummarizer);
+    }
+
+    @Bean
+    public DnaSequenceSummarizer dnaSequenceSummarizer() {
+        return new HumanDnaSequenceSummarizer();
     }
 
 }

@@ -12,7 +12,7 @@ class HumanMutantDetectorTest {
 
     @BeforeEach
     void setUp() {
-        humanMutantDetector = new HumanMutantDetector(new DnaValidate());
+        humanMutantDetector = new HumanMutantDetector(new DnaValidate(), new HumanDnaSequenceSummarizer());
     }
 
     @Test
