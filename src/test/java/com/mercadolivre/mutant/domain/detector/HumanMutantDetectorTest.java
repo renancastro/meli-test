@@ -23,6 +23,13 @@ class HumanMutantDetectorTest {
     }
 
     @Test
+    void shouldBeTraitor() {
+        String[] dna = {"WELIFF"};
+        boolean isTraitor = humanMutantDetector.isMutant(dna);
+        assertTrue(isTraitor);
+    }
+
+    @Test
     void shouldNotBeMutant() {
         String[] dna = {"ATGCGA","CAGTGC","TTATCT","AGAAGG","CCCCTA","TCACTG"};
         boolean isMutant = humanMutantDetector.isMutant(dna);
